@@ -1,0 +1,24 @@
+[[contracts]]
+contract-id = "create-customer-contract-v100"
+contract-binary-name = "com.scalar.carapp.contract.customer.CustomerCreater"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/customer/CustomerCreater.class"
+
+[[contracts]]
+contract-id = "details-customer-contract-v100"
+contract-binary-name = "com.scalar.carapp.contract.customer.CustomerDetails"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/customer/CustomerDetails.class"
+
+[[contracts]]
+contract-id = "update-customer-contract-v101"
+contract-binary-name = "com.scalar.carapp.contract.customer.CustomerUpdater"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/customer/CustomerUpdater.class"
+
+[[contracts]]
+contract-id = "list-customer-contract-v203"
+contract-binary-name = "com.scalar.carapp.contract.customer.CustomerGetList"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/customer/CustomerGetList.class"
+
+[[contracts]]
+contract-id = "list-all-customer-contract-v100"
+contract-binary-name = "com.scalar.carapp.contract.customer.CustomerGetListAll"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/customer/CustomerGetListAll.class"

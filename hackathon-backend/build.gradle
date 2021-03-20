@@ -1,0 +1,29 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = '55-vmo-hackathon-backend'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile group: 'com.scalar-labs', name: 'scalardl-java-client-sdk', version: '2.0.4'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: '2.4.3'
+}
+
+configurations {
+    all*.exclude group: 'ch.qos.logback'
+}
+
+test {
+	useJUnitPlatform()
+}

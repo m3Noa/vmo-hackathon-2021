@@ -1,0 +1,24 @@
+[[contracts]]
+contract-id = "create-car-rental-contract-v200"
+contract-binary-name = "com.scalar.carapp.contract.car.rental.CarRentalCreater"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/rental/CarRentalCreater.class"
+
+[[contracts]]
+contract-id = "details-car-rental-contract"
+contract-binary-name = "com.scalar.carapp.contract.car.rental.CarRentalDetails"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/rental/CarRentalDetails.class"
+
+[[contracts]]
+contract-id = "update-car-rental-contract"
+contract-binary-name = "com.scalar.carapp.contract.car.rental.CarRentalUpdater"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/rental/CarRentalUpdater.class"
+
+[[contracts]]
+contract-id = "update-car-rental-status-contract"
+contract-binary-name = "com.scalar.carapp.contract.car.rental.CarRentalUpdateStatus"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/rental/CarRentalUpdateStatus.class"
+
+[[contracts]]
+contract-id = "list-car-rental-contract-v200"
+contract-binary-name = "com.scalar.carapp.contract.car.rental.CarRentalGetList"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/rental/CarRentalGetList.class"

@@ -1,0 +1,29 @@
+[[contracts]]
+contract-id = "create-car-contract"
+contract-binary-name = "com.scalar.carapp.contract.car.CarCreater"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/CarCreater.class"
+
+[[contracts]]
+contract-id = "details-car-contract-v200"
+contract-binary-name = "com.scalar.carapp.contract.car.CarDetails"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/CarDetails.class"
+
+[[contracts]]
+contract-id = "list-car-contract-v200"
+contract-binary-name = "com.scalar.carapp.contract.car.CarGetList"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/CarGetList.class"
+
+[[contracts]]
+contract-id = "delete-car-contract"
+contract-binary-name = "com.scalar.carapp.contract.car.CarDelete"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/CarDelete.class"
+
+[[contracts]]
+contract-id = "update-car-contract"
+contract-binary-name = "com.scalar.carapp.contract.car.CarUpdater"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/CarUpdater.class"
+
+[[contracts]]
+contract-id = "list-available-car-contract-v200"
+contract-binary-name = "com.scalar.carapp.contract.car.CarGetListAvailable"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/CarGetListAvailable.class"

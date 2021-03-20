@@ -1,0 +1,24 @@
+[[contracts]]
+contract-id = "create-car-category-contract-v100"
+contract-binary-name = "com.scalar.carapp.contract.car.cartegory.CarCategoryCreater"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/cartegory/CarCategoryCreater.class"
+
+[[contracts]]
+contract-id = "details-car-category-contract-v100"
+contract-binary-name = "com.scalar.carapp.contract.car.cartegory.CarCategoryDetails"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/cartegory/CarCategoryDetails.class"
+
+[[contracts]]
+contract-id = "list-car-category-contract-v200"
+contract-binary-name = "com.scalar.carapp.contract.car.cartegory.CarCategoryGetList"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/cartegory/CarCategoryGetList.class"
+
+[[contracts]]
+contract-id = "update-car-category-contract-v100"
+contract-binary-name = "com.scalar.carapp.contract.car.cartegory.CarCategoryUpdater"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/cartegory/CarCategoryUpdater.class"
+
+[[contracts]]
+contract-id = "delete-car-category-contract-v100"
+contract-binary-name = "com.scalar.carapp.contract.car.cartegory.CarCategoryDelete"
+contract-class-file = "build/classes/java/main/com/scalar/carapp/contract/car/cartegory/CarCategoryDelete.class"

@@ -1,0 +1,1246 @@
+openapi: 3.0.1
+info:
+  title: Hackathon, VMO-Global Car Sharing
+  description: 'VMO-Global Car Sharing Api Docs'
+  version: 1.0.0
+servers:
+- url: http://localhost:8082/api/v1/
+tags:
+
+- name: Category
+  description: Category of Car management
+  
+- name: Customer
+  description: Customers management
+  
+- name: Car
+  description: Car menagement
+  
+- name: Rental
+  description: Rental menagement
+  
+paths:
+  /car-cartegory:
+    get:
+      tags:
+      - Category
+      summary: List of category of car
+      description: list category of car
+      operationId: geListCategoryCar
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Category'
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+    post:
+      tags:
+      - Category
+      summary: Add a new category of car
+      operationId: addCategoryCar
+      requestBody:
+        description: Category object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                code: 
+                  type: string
+                name: 
+                  type: string
+                createBy: 
+                  type: string
+        required: true
+      responses:
+        200:
+          description: "Successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  message: 
+                    type: string
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+                    
+                    
+  /car-cartegory/{id}:
+    get:
+      tags:
+      - Category
+      summary: Find details category by ID
+      description: Returns details category
+      operationId: getCategoryById
+      parameters:
+      - name: id
+        in: path
+        description: ID of category to return
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    $ref: '#/components/schemas/Category'
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Category does not exist!"
+    put:
+      tags:
+      - Category
+      summary: Updates a category in the store with form data
+      operationId: updateCategoryCar
+      parameters:
+      - name: id
+        in: path
+        description: ID of category that needs to be updated
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  code: 
+                    type: string
+                  name: 
+                    type: string
+                  updateBy: 
+                    type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Category update successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Category does not exist!"
+                  
+    delete:
+      tags:
+      - Category
+      summary: Delete a category in the store with ID
+      operationId: deleteCategoryCar
+      parameters:
+      - name: id
+        in: path
+        description: ID of category that needs to be updated
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Category deleted successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Category does not exist!"
+                    
+                    
+  /customer:
+    get:
+      tags:
+      - Customer
+      summary: List of customers with status is actived
+      description: list customers
+      operationId: geListCustomers
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Customer'
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+    post:
+      tags:
+      - Customer
+      summary: Add a new customer
+      operationId: addCustomer
+      requestBody:
+        description: Customer object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                firstName: 
+                  type: string
+                lastName: 
+                  type: string
+                address: 
+                  type: string
+                mobilephone: 
+                  type: string
+                createBy: 
+                    type: string
+        required: true
+      responses:
+        200:
+          description: "Successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  message: 
+                    type: string
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+                    
+                    
+  /customer/{id}:
+    get:
+      tags:
+      - Customer
+      summary: Find details customer by ID
+      description: Returns details customer
+      operationId: getCustomerById
+      parameters:
+      - name: id
+        in: path
+        description: ID of customer to return
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    $ref: '#/components/schemas/Customer'
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Customer does not exist!"
+    put:
+      tags:
+      - Customer
+      summary: Updates a customer in the store with form data
+      operationId: updateCustomer
+      parameters:
+      - name: id
+        in: path
+        description: ID of customer that needs to be updated
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  firstName: 
+                    type: string
+                  lastName: 
+                    type: string
+                  address: 
+                    type: string
+                  mobilephone: 
+                    type: string
+                  updateBy: 
+                    type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Customer update successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Customer does not exist!"
+                  
+    
+  /customer/{id}/deactive:
+    put:
+      tags:
+      - Customer
+      summary: Deactive a customer
+      operationId: deactiveCustomer
+      parameters:
+      - name: id
+        in: path
+        description: ID of customer that needs to be deactive
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Customer deactived successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Customer does not exist!"
+                    
+     
+  /customer/all:
+    get:
+      tags:
+      - Customer
+      summary: List of all customers ( includes actived and inactived )
+      description: list customers
+      operationId: geListALlCustomers
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Customer'
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+                   
+                   
+  /car:
+    get:
+      tags:
+      - Car
+      summary: List of all cars
+      description: list cars
+      operationId: geListCars
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Car'
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+    post:
+      tags:
+      - Car
+      summary: Add a new car
+      operationId: addCar
+      requestBody:
+        description: Car object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                categoryCode: 
+                  type: string
+                name: 
+                  type: string
+                description: 
+                  type: string
+                imageUrl: 
+                  type: string
+                pricePerDay: 
+                  type: number
+                  format: double
+                  default: 0.00
+                createBy: 
+                  type: string
+        required: true
+      responses:
+        200:
+          description: "Successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Car ${id} created!"
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+  
+           
+  /car/{id}:
+    get:
+      tags:
+      - Car
+      summary: Find details car by ID
+      description: Returns details car
+      operationId: getCarById
+      parameters:
+      - name: id
+        in: path
+        description: ID of car to return
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    type: object
+                    properties: 
+                    $ref: '#/components/schemas/Car'
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Car does not exist!"
+    put:
+      tags:
+      - Car
+      summary: Updates a car in the store with form data
+      operationId: updateCar
+      parameters:
+      - name: id
+        in: path
+        description: ID of car that needs to be updated
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  categoryCode: 
+                    type: string
+                  name: 
+                    type: string
+                  description: 
+                    type: string
+                  imageUrl: 
+                    type: string
+                  pricePerDay: 
+                    type: number
+                    format: double
+                    default: 0
+                  updateBy: 
+                    type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Car update successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Car does not exist!"
+  
+    delete:
+      tags:
+      - Car
+      summary: Delete a car in the store with ID
+      operationId: deleteCar
+      parameters:
+      - name: id
+        in: path
+        description: ID of car that needs to be updated
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Car deleted successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Car does not exist!"
+                    
+        
+  /car/available:
+    post:
+      tags:
+      - Car
+      summary: List of car available in times
+      operationId: listCarAvaiable
+      requestBody:
+        description: Get a list car available in fromDate and dueDate
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                fromDate: 
+                  type: string
+                  description: "2021-03-17 11:12:33+0700"
+                dueDate: 
+                  type: string
+                  description: "2021-03-19 11:12:33+0700"
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Customer'
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+        
+        
+  /car-rental:
+    get:
+      tags:
+      - Rental
+      summary: List of rentals
+      description: list rentals
+      operationId: geListRentals
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Rental'
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+    post:
+      tags:
+      - Rental
+      summary: Add a new rental
+      operationId: addrental
+      requestBody:
+        description: Rental object that needs to be added
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                carId: 
+                  type: string
+                customerId: 
+                  type: string
+                fromDate: 
+                  type: string
+                  description: "2021-03-18 11:12:33+0700"
+                dueDate: 
+                  type: string
+                  description: "2021-03-19 11:12:33+0700"
+                createBy: 
+                  type: string
+        required: true
+      responses:
+        200:
+          description: "Successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  message: 
+                    type: string
+        500:
+          description: "Internal Network Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "UNKNOWN_TRANSACTION_STATUS"
+                  message: 
+                    type: string
+                    description: "UNAVAILABLE: io exception"
+        
+  
+  /car-rental/{id}:
+    get:
+      tags:
+      - Rental
+      summary: Find details rental by ID
+      description: Returns details rental
+      operationId: getRentalById
+      parameters:
+      - name: id
+        in: path
+        description: ID of rental to return
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                  data: 
+                    $ref: '#/components/schemas/Rental'
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Car Rental does not exist!"
+    put:
+      tags:
+      - Rental
+      summary: Updates a rental in the store with form data
+      operationId: updateRental
+      parameters:
+      - name: id
+        in: path
+        description: ID of rental that needs to be updated
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  carId: 
+                    type: string
+                  customerId: 
+                    type: string
+                  fromDate: 
+                    type: string
+                    description: "2021-03-10 11:12:33+0700"
+                  dueDate: 
+                    type: string
+                    description: "2021-03-12 11:12:33+0700"
+                  updateBy: 
+                    type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Car Rental update successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Car Rental does not exist!"
+        
+        
+  /car-rental/{id}/return:
+    put:
+      tags:
+      - Rental
+      summary: Return a rental
+      operationId: returnRental
+      parameters:
+      - name: id
+        in: path
+        description: ID of rental that needs to be return
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                updateBy: 
+                  type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Rental update successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Rental does not exist!"
+  
+  /car-rental/{id}/start:
+    put:
+      tags:
+      - Rental
+      summary: Start a rental
+      operationId: startRental
+      parameters:
+      - name: id
+        in: path
+        description: ID of rental that needs to be start
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                updateBy: 
+                  type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Rental update successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Rental does not exist!"
+                    
+   
+  /car-rental/{id}/cancel:
+    put:
+      tags:
+      - Rental
+      summary: Cancel a rental
+      operationId: cancelRental
+      parameters:
+      - name: id
+        in: path
+        description: ID of rental that needs to be cancel
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                updateBy: 
+                  type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "Succeeded!"
+                  message: 
+                    type: string
+                    description: "Rental update successfully!"
+        500:
+          description: Internal Server Error
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  status: 
+                    type: string
+                    description: "CONTRACT_CONTEXTUAL_ERROR"
+                  message: 
+                    type: string
+                    description: "Rental does not exist!"
+        
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        name:
+          type: string
+        isDeleted:
+          type: number
+          format: int1
+          default: 0
+        isActive:
+          type: number
+          format: int1
+          default: 1
+        createBy:
+          type: string
+          default: "system"
+        updateBy:
+          type: string
+        createAt:
+          type: string
+        updateAt:
+          type: string
+        
+    Car:
+      type: object
+      properties:
+        id:
+          type: string
+        category: 
+          $ref: "#/components/schemas/Category"
+        name:
+          type: string
+        description:
+          type: string
+        imageUrl:
+          type: string
+        pricePerDay:
+          type: number
+          format: double
+        rentalStatus:
+          type: number
+          format: int1
+        isDeleted:
+          type: number
+          format: int1
+          default: 0
+        isActive:
+          type: number
+          format: int1
+          default: 1
+        createBy:
+          type: string
+        updateBy:
+          type: string
+        createAt:
+          type: string
+        updateAt:
+          type: string
+          
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName: 
+          type: string
+        lastName:
+          type: string
+        address:
+          type: string
+        mobilephone:
+          type: string
+        isDeleted:
+          type: number
+          format: int1
+          default: 0
+        isActive:
+          type: number
+          format: int1
+          default: 1
+        createBy:
+          type: string
+        updateBy:
+          type: string
+        createAt:
+          type: string
+        updateAt:
+          type: string
+          
+    Rental:
+      type: object
+      properties:
+        id:
+          type: string
+        car: 
+          $ref: "#/components/schemas/Car"
+        customer:
+          $ref: "#/components/schemas/Customer"
+        fromDate:
+          type: string
+        dueDate:
+          type: string
+        basePrice:
+          type: number
+          format: double
+        discount:
+          type: number
+          format: double
+          default: 0.00
+        tax:
+          type: number
+          format: double
+          default: 0.00
+        totalPrice:
+          type: number
+          format: double
+        status:
+          type: number
+          format: in1
+          default: 0
+        createBy:
+          type: string
+        updateBy:
+          type: string
+        createAt:
+          type: string
+        updateAt:
+          type: string
+    ApiResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
