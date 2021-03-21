@@ -6,7 +6,7 @@ This is a VMO-Global Car Sharing application. The actions that a user can perfor
 
 All actions performed on an account are recorded in Scalar DL, which means that the appliance information is recorded in a tamper-evident way, similar to how blockchains record blocks. This means that if any entity like car, customer and rental was altered (either intentionally or not), it is possible to detect this. 
 
-This application uses five contracts:
+This application uses some contracts:
 
 + `Car Category`
     - `CarCategoryCreater.java`
